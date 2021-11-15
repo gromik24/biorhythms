@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationMenu = findViewById(R.id.bottom_navigation_menu)
 
-        //натсроим клики по элементам нижней навигации
+        //настроим клики по элементам нижней навигации
         bottomNavigationMenu.setOnItemSelectedListener { item ->
             var fragment: Fragment? = null
             when (item.itemId) {
@@ -64,16 +64,16 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        //восстановление состояния нижней навиагции
+        //восстановление состояния нижней навигации
         //если не сохранено то по дефолту выбрать R.id.dayChars
         bottomNavigationMenu.selectedItemId =
             savedInstanceState?.getInt(LAST_SELECTED_ITEM) ?: R.id.day_chars
     }
-    //сохрнаим состояние последнего нажатого элемента нижней навигации
+    //сохраним состояние последнего нажатого элемента нижней навигации
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putInt(LAST_SELECTED_ITEM, bottomNavigationMenu.selectedItemId)
 
-        //сохраняем интсанцию конкретного фрагмента
+        //сохраняем инстанцию конкретного фрагмента
         val fragment = supportFragmentManager.fragments.last()
         supportFragmentManager.putFragment(outState, fragment.javaClass.name, fragment)
         super.onSaveInstanceState(outState)

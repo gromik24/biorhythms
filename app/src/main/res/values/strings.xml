@@ -31,4 +31,5 @@
     <string name="calculate_levels_button">Рассчитать уровни</string>
     <string name="share_button">Поделиться</string>
     <string name="todo">Раздел в стадии разработки</string>
+    <string name="content_description_media">Символ биоритма</string>
 </resources>
