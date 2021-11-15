@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/day_chars"
+        android:icon="@drawable/ic_baseline_today_24"
+        android:title="@string/day_chars" />
+
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/ic_baseline_help_outline_24"
+        android:title="@string/info" />
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_person_search_24"
+        android:title="@string/search" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        android:title="@string/settings" />
+
+</menu>

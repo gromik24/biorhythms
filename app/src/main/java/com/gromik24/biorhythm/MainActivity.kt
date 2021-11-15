@@ -1,0 +1,90 @@
+package com.gromik24.biorhythm
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
+//константа для ключа сохранения состояния
+private const val LAST_SELECTED_ITEM = "LAST_SELECTED_ITEM"
+private val DAY_CHARS_FRAGMENT = DayCharsFragment().javaClass.name
+private val INFO_FRAGMENT = InfoFragment().javaClass.name
+private val SEARCH_FRAGMENT = SearchFragment().javaClass.name
+private val SETTINGS_FRAGMENT = SettingsFragment().javaClass.name
+
+
+class MainActivity : AppCompatActivity() {
+
+    private var dayCharsFragment = DayCharsFragment()
+    private var infoFragment = InfoFragment()
+    private var searchFragment = SearchFragment()
+    private var settingsFragment = SettingsFragment()
+
+    //ранняя инициализация нижней навигации
+    private lateinit var bottomNavigationMenu: BottomNavigationView
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+        bottomNavigationMenu = findViewById(R.id.bottom_navigation_menu)
+
+        //натсроим клики по элементам нижней навигации
+        bottomNavigationMenu.setOnItemSelectedListener { item ->
+            var fragment: Fragment? = null
+            when (item.itemId) {
+                R.id.day_chars -> {
+                    fragment =
+                        savedInstanceState?.let {
+                            supportFragmentManager.getFragment(it, DAY_CHARS_FRAGMENT)
+                        } ?: dayCharsFragment
+                }
+                R.id.info -> {
+                    fragment =
+                        savedInstanceState?.let {
+                            supportFragmentManager.getFragment(it, INFO_FRAGMENT)
+                        } ?: infoFragment
+                }
+                R.id.search -> {
+                    fragment =
+                        savedInstanceState?.let {
+                            supportFragmentManager.getFragment(it, SEARCH_FRAGMENT)
+                        } ?: searchFragment
+                }
+                R.id.settings -> {
+                    fragment =
+                        savedInstanceState?.let {
+                            supportFragmentManager.getFragment(it, SETTINGS_FRAGMENT)
+                        } ?: settingsFragment
+                }
+            }
+            replaceFragment(fragment!!)
+            true
+        }
+
+        //восстановление состояния нижней навиагции
+        //если не сохранено то по дефолту выбрать R.id.dayChars
+        bottomNavigationMenu.selectedItemId =
+            savedInstanceState?.getInt(LAST_SELECTED_ITEM) ?: R.id.day_chars
+    }
+    //сохрнаим состояние последнего нажатого элемента нижней навигации
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putInt(LAST_SELECTED_ITEM, bottomNavigationMenu.selectedItemId)
+
+        //сохраняем интсанцию конкретного фрагмента
+        val fragment = supportFragmentManager.fragments.last()
+        supportFragmentManager.putFragment(outState, fragment.javaClass.name, fragment)
+        super.onSaveInstanceState(outState)
+    }
+
+    //функция замены фрагментов с помощью supportFragmentManager
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+}

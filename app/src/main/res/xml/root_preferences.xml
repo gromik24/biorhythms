@@ -1,0 +1,51 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/user_data_header">
+
+        <EditTextPreference
+            app:key="user_name"
+            app:title="@string/user_name_title"
+            app:useSimpleSummaryProvider="true" />
+        <EditTextPreference
+            app:key="birthdate"
+            app:title="@string/birthdate_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="male"
+            app:entries="@array/gender_entries"
+            app:entryValues="@array/gender_values"
+            app:key="gender"
+            app:title="@string/gender_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="include_in_search"
+            app:summaryOff="@string/include_in_search_off"
+            app:summaryOn="@string/include_in_search_on"
+            app:title="@string/include_in_search_title" />
+
+        <EditTextPreference
+            app:dependency="include_in_search"
+            app:key="email"
+            app:title="@string/email_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+
+    <PreferenceCategory app:title="@string/about_app_header">
+
+        <Preference
+            app:summary="@string/about_app_summary"
+            app:title="@string/about_app_title">
+
+            <intent
+                action="android.intent.ACTION_VIEW"
+                data="https://vk.com/id752956" />
+
+        </Preference>
+    </PreferenceCategory>
+
+</PreferenceScreen>
