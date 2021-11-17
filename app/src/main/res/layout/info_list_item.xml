@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     id="@+id/info_card"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     layout_margin="8dp">
 
     <LinearLayout
@@ -23,7 +23,8 @@
             android:id="@+id/header_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            style="@style/Theme.Biorhythm.TextView.Bold"/>
 
         <TextView
             android:id="@+id/description_text_view"

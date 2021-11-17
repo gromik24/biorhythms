@@ -1,35 +1,20 @@
 <resources>
     <string name="app_name">Биоритмы</string>
 
+    <string name="day_chars">Биоритмы</string>
+    <string name="info">Теория</string>
+    <string name="check_identity">Совместимость</string>
 
-    <!-- Preference Titles -->
-    <string name="user_data_header">Данные пользователя</string>
-    <string name="about_app_header">О приложении</string>
+    <string name="emotional">Эмоции</string>
+    <string name="physical">Физика</string>
+    <string name="intellectual">Интеллект</string>
 
-    <!-- User data Preferences -->
-    <string name="user_name_title">Имя</string>
-    <string name="birthdate_title">Дата рождения</string>
-    <string name="gender_title">Пол</string>
-    <string name="email_title">Адрес электронной почты</string>
-        <string name="include_in_search_title">Включить в поисковые запросы</string>
-    <string name="include_in_search_on">Показывать в поисковых запросах</string>
-    <string name="include_in_search_off">Исключать из поиска</string>
-
-    <!-- About App Preferences -->
-    <string name="about_app_title">Разработчик</string>
-
-
-    <string name="day_chars">Значения биоритмов</string>
-    <string name="info">Справка о биоритмах</string>
-    <string name="search">Поиск людей со схожими биоритмами</string>
-    <string name="settings">Настройки</string>
-
-    <string name="about_app_summary">Нажмите, чтобы открыть web-страницу разработчика</string>
-    <string name="emotional_level">Эмоции</string>
-    <string name="physical_level">Физика</string>
-    <string name="intellectual_level">Интеллект</string>
     <string name="calculate_levels_button">Рассчитать уровни</string>
     <string name="share_button">Поделиться</string>
-    <string name="todo">Раздел в стадии разработки</string>
     <string name="content_description_media">Символ биоритма</string>
+
+    <string name="calculate_identity_button">Рассчитать совместимость</string>
+    <string name="enter_birthdates">Введите даты рождения</string>
+    <string name="enter_base_date">Введите дату расчета</string>
+    <string name="enter_birthdate">Введите дату рождения</string>
 </resources>

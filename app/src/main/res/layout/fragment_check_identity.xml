@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DayCharsFragment">
+    tools:context=".CheckIdentityFragment">
 
     <TextView
         android:id="@+id/birthdate_text_view"
         style="@style/Theme.Biorhythm.TextView.Bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/enter_birthdate"
+        android:text="@string/enter_birthdates"
         android:textAlignment="center"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <DatePicker
-        android:id="@+id/birthdate_date_picker"
+        android:id="@+id/birthdate1_date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
@@ -27,35 +27,24 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthdate_text_view" />
 
-    <TextView
-        android:id="@+id/base_date_text_view"
-        style="@style/Theme.Biorhythm.TextView.Bold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/enter_base_date"
-        android:textAlignment="center"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/birthdate_date_picker" />
-
     <DatePicker
-        android:id="@+id/base_date_date_picker"
+        android:id="@+id/birthdate2_date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:calendarViewShown="false"
         android:datePickerMode="spinner"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/base_date_text_view" />
+        app:layout_constraintTop_toBottomOf="@+id/birthdate1_date_picker" />
 
     <Button
-        android:id="@+id/calculate_levels_button"
+        android:id="@+id/calculate_identity_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/calculate_levels_button"
+        android:text="@string/calculate_identity_button"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/base_date_date_picker" />
+        app:layout_constraintTop_toBottomOf="@id/birthdate2_date_picker" />
 
     <LinearLayout
         android:id="@+id/linear_layout_header"
@@ -64,30 +53,30 @@
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calculate_levels_button">
+        app:layout_constraintTop_toBottomOf="@id/calculate_identity_button">
 
         <TextView
+            style="@style/Theme.Biorhythm.TextView.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/physical"
-            style="@style/Theme.Biorhythm.TextView.Bold"
             android:textAlignment="center" />
 
         <TextView
+            style="@style/Theme.Biorhythm.TextView.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/emotional"
-            style="@style/Theme.Biorhythm.TextView.Bold"
             android:textAlignment="center" />
 
         <TextView
+            style="@style/Theme.Biorhythm.TextView.Bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/intellectual"
-            style="@style/Theme.Biorhythm.TextView.Bold"
             android:textAlignment="center" />
     </LinearLayout>
 
@@ -98,37 +87,29 @@
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear_layout_header">
+        app:layout_constraintTop_toBottomOf="@id/linear_layout_header">
 
         <TextView
-            android:id="@+id/physical_level_text_view"
+            android:id="@+id/physical_identity_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/emotional_level_text_view"
+            android:id="@+id/emotional_identity_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center" />
 
         <TextView
-            android:id="@+id/intellectual_level_text_view"
+            android:id="@+id/intellectual_identity_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAlignment="center" />
+
+
     </LinearLayout>
-
-    <Button
-        android:id="@+id/share_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/share_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

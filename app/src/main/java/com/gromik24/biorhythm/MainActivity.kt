@@ -1,5 +1,7 @@
 package com.gromik24.biorhythm
 
+import android.app.Activity
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,16 +11,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 private const val LAST_SELECTED_ITEM = "LAST_SELECTED_ITEM"
 private val DAY_CHARS_FRAGMENT = DayCharsFragment().javaClass.name
 private val INFO_FRAGMENT = InfoFragment().javaClass.name
-private val SEARCH_FRAGMENT = SearchFragment().javaClass.name
-private val SETTINGS_FRAGMENT = SettingsFragment().javaClass.name
-
+private val CHECK_IDENTITY_FRAGMENT = CheckIdentityFragment().javaClass.name
 
 class MainActivity : AppCompatActivity() {
 
     private var dayCharsFragment = DayCharsFragment()
     private var infoFragment = InfoFragment()
-    private var searchFragment = SearchFragment()
-    private var settingsFragment = SettingsFragment()
+    private var checkIdentityFragment = CheckIdentityFragment()
 
     //ранняя инициализация нижней навигации
     private lateinit var bottomNavigationMenu: BottomNavigationView
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
 
         bottomNavigationMenu = findViewById(R.id.bottom_navigation_menu)
@@ -47,17 +47,11 @@ class MainActivity : AppCompatActivity() {
                             supportFragmentManager.getFragment(it, INFO_FRAGMENT)
                         } ?: infoFragment
                 }
-                R.id.search -> {
+                R.id.check_identity -> {
                     fragment =
                         savedInstanceState?.let {
-                            supportFragmentManager.getFragment(it, SEARCH_FRAGMENT)
-                        } ?: searchFragment
-                }
-                R.id.settings -> {
-                    fragment =
-                        savedInstanceState?.let {
-                            supportFragmentManager.getFragment(it, SETTINGS_FRAGMENT)
-                        } ?: settingsFragment
+                            supportFragmentManager.getFragment(it, CHECK_IDENTITY_FRAGMENT)
+                        } ?: checkIdentityFragment
                 }
             }
             replaceFragment(fragment!!)

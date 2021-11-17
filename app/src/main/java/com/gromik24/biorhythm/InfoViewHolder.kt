@@ -16,7 +16,6 @@ class InfoViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         descriptionTextView.text = info.text
 
         val infoImageView: ImageView = itemView.findViewById(R.id.info_image_view)
-      /*  infoImageView.setImageDrawable(itemView.context.getDrawable(info.imageRes))*/
 
     }
 }

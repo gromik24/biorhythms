@@ -19,16 +19,14 @@ class InfoFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_info, container, false)
 
-
         val biorhythmsInfoHeaders = resources.getStringArray(R.array.biorhythms_info_headers)
         val biorhythmsInfoTexts = resources.getStringArray(R.array.biorhythms_info_texts)
 
-        val infoList: List<Info> = listOf(
-            Info(biorhythmsInfoHeaders[0],biorhythmsInfoTexts[0]),
-            Info(biorhythmsInfoHeaders[1],biorhythmsInfoTexts[1]),
-            Info(biorhythmsInfoHeaders[2],biorhythmsInfoTexts[2]),
-            Info(biorhythmsInfoHeaders[3],biorhythmsInfoTexts[3]),
-            Info(biorhythmsInfoHeaders[4],biorhythmsInfoTexts[4]) )
+        val infoList = mutableListOf<Info>()
+
+        for (i in 0..4) {
+            infoList += Info(biorhythmsInfoHeaders[i], biorhythmsInfoTexts[i])
+        }
 
         val infoRecyclerView: RecyclerView = view.findViewById(R.id.info_recycler_view)
         infoRecyclerView.layoutManager =
@@ -41,8 +39,6 @@ class InfoFragment : Fragment() {
         )
 
         infoRecyclerView.adapter = InfoAdapter(infoList)
-
-
 
         return view
     }
