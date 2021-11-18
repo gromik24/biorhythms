@@ -10,8 +10,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 //константа для ключа сохранения состояния
 private const val LAST_SELECTED_ITEM = "LAST_SELECTED_ITEM"
 private val DAY_CHARS_FRAGMENT = DayCharsFragment().javaClass.name
-private val INFO_FRAGMENT = InfoFragment().javaClass.name
 private val CHECK_IDENTITY_FRAGMENT = CheckIdentityFragment().javaClass.name
+private val INFO_FRAGMENT = InfoFragment().javaClass.name
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,17 +41,17 @@ class MainActivity : AppCompatActivity() {
                             supportFragmentManager.getFragment(it, DAY_CHARS_FRAGMENT)
                         } ?: dayCharsFragment
                 }
-                R.id.info -> {
-                    fragment =
-                        savedInstanceState?.let {
-                            supportFragmentManager.getFragment(it, INFO_FRAGMENT)
-                        } ?: infoFragment
-                }
                 R.id.check_identity -> {
                     fragment =
                         savedInstanceState?.let {
                             supportFragmentManager.getFragment(it, CHECK_IDENTITY_FRAGMENT)
                         } ?: checkIdentityFragment
+                }
+                R.id.info -> {
+                    fragment =
+                        savedInstanceState?.let {
+                            supportFragmentManager.getFragment(it, INFO_FRAGMENT)
+                        } ?: infoFragment
                 }
             }
             replaceFragment(fragment!!)
@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
         val fragment = supportFragmentManager.fragments.last()
         supportFragmentManager.putFragment(outState, fragment.javaClass.name, fragment)
         super.onSaveInstanceState(outState)
+
     }
 
     //функция замены фрагментов с помощью supportFragmentManager

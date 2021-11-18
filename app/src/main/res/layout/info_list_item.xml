@@ -11,15 +11,7 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/info_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/content_description_media"
-            />
-
-        <TextView
+       <TextView
             android:id="@+id/header_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

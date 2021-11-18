@@ -1,5 +1,6 @@
 package com.gromik24.biorhythm
 
+import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
@@ -29,15 +30,18 @@ class CheckIdentityFragment : Fragment() {
     private lateinit var birthdate2: LocalDate
     private var diffInDays: Long = 0
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    private lateinit var birthdate1DatePicker: DatePicker
+    private lateinit var birthdate2DatePicker: DatePicker
+
+            @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_check_identity, container, false)
 
-        val birthdate1DatePicker: DatePicker = view.findViewById(R.id.birthdate1_date_picker)
-        val birthdate2DatePicker: DatePicker = view.findViewById(R.id.birthdate2_date_picker)
+        birthdate1DatePicker = view.findViewById(R.id.birthdate1_date_picker)
+        birthdate2DatePicker = view.findViewById(R.id.birthdate2_date_picker)
 
         val calculateIdentityButton: Button = view.findViewById(R.id.calculate_identity_button)
 
@@ -46,6 +50,16 @@ class CheckIdentityFragment : Fragment() {
         val intellectualIdentityTextView: TextView =
             view.findViewById(R.id.intellectual_identity_text_view)
         val physicalIdentityTextView: TextView = view.findViewById(R.id.physical_identity_text_view)
+
+        if (savedInstanceState !=null) {
+            birthdate1DatePicker.updateDate(savedInstanceState.getInt("birthdate1_year"),
+                savedInstanceState.getInt("birthdate1_month"),
+                savedInstanceState.getInt("birthdate1_day"))
+
+            birthdate2DatePicker.updateDate(savedInstanceState.getInt("birthdate2_year"),
+                savedInstanceState.getInt("birthdate2_month"),
+                savedInstanceState.getInt("birthdate2_day"))
+        }
 
         calculateIdentityButton.setOnClickListener()
         {
@@ -80,6 +94,19 @@ class CheckIdentityFragment : Fragment() {
 
         if (cycleIdentity <= 40) textView.setBackgroundColor(textView.context.getColor(R.color.red))
         else textView.setBackgroundColor(textView.context.getColor(R.color.green))
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+
+        outState.putInt("birthdate1_year", birthdate1DatePicker.year)
+        outState.putInt("birthdate1_month", birthdate1DatePicker.month)
+        outState.putInt("birthdate1_day", birthdate1DatePicker.dayOfMonth)
+
+        outState.putInt("birthdate2_year", birthdate2DatePicker.year)
+        outState.putInt("birthdate2_month", birthdate2DatePicker.month)
+        outState.putInt("birthdate2_day", birthdate2DatePicker.dayOfMonth)
+
+        super.onSaveInstanceState(outState)
     }
 
 

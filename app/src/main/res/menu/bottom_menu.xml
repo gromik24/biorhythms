@@ -5,14 +5,12 @@
         android:id="@+id/day_chars"
         android:icon="@drawable/ic_baseline_today_24"
         android:title="@string/day_chars" />
-
-    <item
-        android:id="@+id/info"
-        android:icon="@drawable/ic_baseline_help_outline_24"
-        android:title="@string/info" />
-
     <item
         android:id="@+id/check_identity"
         android:icon="@drawable/ic_baseline_invert_colors_24"
         android:title="@string/check_identity" />
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/ic_baseline_help_outline_24"
+        android:title="@string/info" />
 </menu>

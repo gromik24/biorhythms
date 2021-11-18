@@ -15,7 +15,5 @@ class InfoViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         headerTextView.text = info.header
         descriptionTextView.text = info.text
 
-        val infoImageView: ImageView = itemView.findViewById(R.id.info_image_view)
-
     }
 }

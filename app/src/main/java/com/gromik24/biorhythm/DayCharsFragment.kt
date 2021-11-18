@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,6 +32,9 @@ class DayCharsFragment : Fragment() {
     private lateinit var baseDate: LocalDate
     private var ageInDays: Long = 0
 
+    private lateinit var birthdateDatePicker: DatePicker
+    private lateinit var baseDateDatePicker: DatePicker
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,8 +42,8 @@ class DayCharsFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_day_chars, container, false)
 
-        val birthdateDatePicker: DatePicker = view.findViewById(R.id.birthdate_date_picker)
-        val baseDateDatePicker: DatePicker = view.findViewById(R.id.base_date_date_picker)
+        birthdateDatePicker = view.findViewById(R.id.birthdate_date_picker)
+        baseDateDatePicker = view.findViewById(R.id.base_date_date_picker)
 
         val calculateLevelsButton: Button = view.findViewById(R.id.calculate_levels_button)
         val shareButton: Button = view.findViewById(R.id.share_button)
@@ -48,6 +52,23 @@ class DayCharsFragment : Fragment() {
         val intellectualLevelTextView: TextView =
             view.findViewById(R.id.intellectual_level_text_view)
         val physicalLevelTextView: TextView = view.findViewById(R.id.physical_level_text_view)
+
+        if (savedInstanceState != null) {
+
+            Log.d("TAG","заполнение дат")
+            birthdateDatePicker.updateDate(
+                savedInstanceState.getInt("birthdate_year"),
+                savedInstanceState.getInt("birthdate_month"),
+                savedInstanceState.getInt("birthdate_day")
+            )
+
+            baseDateDatePicker.updateDate(
+                savedInstanceState.getInt("baseDate_year"),
+                savedInstanceState.getInt("baseDate_month"),
+                savedInstanceState.getInt("baseDate_day")
+            )
+        }
+
 
         calculateLevelsButton.setOnClickListener()
         {
@@ -87,7 +108,6 @@ class DayCharsFragment : Fragment() {
                 ).show()
             else {
 
-
                 val shareIntent = Intent()
                 shareIntent.action = Intent.ACTION_SEND
 
@@ -113,5 +133,19 @@ class DayCharsFragment : Fragment() {
         else textView.setBackgroundColor(textView.context.getColor(R.color.green))
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        Log.d("TAG","сохранение дат")
+        outState.putInt("birthdate_year", birthdateDatePicker.year)
+        outState.putInt("birthdate_month", birthdateDatePicker.month)
+        outState.putInt("birthdate_day", birthdateDatePicker.dayOfMonth)
+
+        outState.putInt("baseDate_year", baseDateDatePicker.year)
+        outState.putInt("baseDate_month", baseDateDatePicker.month)
+        outState.putInt("baseDate_day", baseDateDatePicker.dayOfMonth)
+
+        super.onSaveInstanceState(outState)
+    }
 
 }
+
+
